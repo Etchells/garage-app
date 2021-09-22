@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  gateway:
+      container_name: garage-gateway
+      image: garage-gateway:latest
+      build: ./gateway
+      ports:
+      - target: 80
+        published: 80
+  frontend:
+    container_name: garage-frontend
+    image: garage-frontend:latest
+    build: ./frontend
+  backend:
+    container_name: garage-backend
+    image: garage-backend:latest
+    build: ./backend
+    environment:
+      MYSQL_SERVER:
+      MYSQL_USER:
+      MYSQL_PASSWORD:
