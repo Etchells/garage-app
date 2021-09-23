@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "Building images"
                 sh 'sudo chmod 666 /var/run/docker.sock' // not best practise but pipline fails to build without
-                sh 'docker build -t garage-backend:latest backend/.'
+                sh 'docker build -t garage-backend:latest ./backend'
                 sh 'docker build -t garage-frontend:latest ./frontend'
                 sh 'docker build -t garage-gateway:latest ./gateway'
             }
