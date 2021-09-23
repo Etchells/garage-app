@@ -10,7 +10,7 @@ pipeline {
                 sh 'sudo apt install curl -y'
                 sh 'curl https://get.docker.com | sudo bash'
                 sh 'sudo usermod -aG docker $(whoami)'
-                sh 'su -s ${USER}'
+                sh 'sudo systemctl restart docker'
                 // Steps to install Docker-Compose
                 echo "Installing Docker-Compose"
                 //make sure jq & curl is installed
