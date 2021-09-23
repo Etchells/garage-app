@@ -11,22 +11,13 @@ pipeline {
                 // Remember 'sudo visudo' then add 'jenkins ALL= NOPASSWD: ALL.' at the bottom
                 // Steps to install Docker
                 echo "Installing Docker"
-                sh 'sudo apt-get update'
-                sh 'sudo apt install curl -y'
-                sh 'curl https://get.docker.com | sudo bash'
-                sh 'sudo usermod -aG docker $(whoami)'
-                sh 'sudo systemctl restart docker' // restarting group
-                
+                sh 'sudo chmod +x install_docker.sh'
+                sh './install_docker.sh'
                 // Steps to install Docker-Compose
                 echo "Installing Docker-Compose"
-                //make sure jq & curl is installed
-                sh 'sudo apt install -y curl jq'
-                // set which version to download (latest)
-                sh 'version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)'
-                // download to /usr/local/bin/docker-compose
-                sh 'sudo curl -L "https://github.com/docker/compose/releases/download/${version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-                // make the file executable
-                sh 'sudo chmod +x /usr/local/bin/docker-compose'
+                sh 'sudo chmod +x install_docker_compose.sh'
+                sh './install_docker-compose.sh'
+                sh 'sudo systemctl restart docker' // restarting group
             }
         }
         stage('2. Build – build the Docker images') {
