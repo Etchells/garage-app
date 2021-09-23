@@ -5,7 +5,7 @@ pipeline {
             steps {
                 // Steps to install Docker
                 echo "Installing Docker"
-                //sh 'sudo apt-get update'
+                sh 'sudo apt-get update'
                 sh 'sudo apt install curl -y'
                 sh 'curl https://get.docker.com | sudo bash'
                 sh 'sudo usermod -aG docker $(whoami)'
