@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('1. Configure – install dependencies (Docker, Docker Compose)') {
             steps {
+                // Remember 'sudo visudo' then add 'jenkins ALL= NOPASSWD: ALL.' at the bottom
                 // Steps to install Docker
                 echo "Installing Docker"
                 sh 'sudo apt-get update'
@@ -24,7 +25,7 @@ pipeline {
         stage('2. Build – build the Docker images') {
             steps {
                 echo "Building images"
-                sh 'docker build -t garage-backend:latest ./backend'
+                sh 'docker build -t garage-backend:latest backend/.'
                 sh 'docker build -t garage-frontend:latest ./frontend'
                 sh 'docker build -t garage-gateway:latest ./gateway'
             }
