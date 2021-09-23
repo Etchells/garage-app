@@ -42,9 +42,9 @@ pipeline {
             steps {
                 //docker username and password stored in Manage Jenkins/Manage Credentials.
                 echo "Pushing Images to DockerHub"
-                sh 'docker push garage-backend:latest'
-                sh 'docker push garage-frontend:latest'
-                sh 'docker push garage-gateway:latest'
+                sh 'docker push getchells/jenkins:garage-backend'
+                sh 'docker push getchells/jenkins:garage-frontend'
+                sh 'docker push getchells/jenkins:garage-gateway''
             }
         }
         stage('4. Deploy – deploy the application') {
