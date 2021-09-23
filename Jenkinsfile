@@ -11,6 +11,7 @@ pipeline {
                 sh 'curl https://get.docker.com | sudo bash'
                 sh 'sudo usermod -aG docker $(whoami)'
                 sh 'sudo systemctl restart docker'
+                
                 // Steps to install Docker-Compose
                 echo "Installing Docker-Compose"
                 //make sure jq & curl is installed
@@ -26,6 +27,7 @@ pipeline {
         stage('2. Build – build the Docker images') {
             steps {
                 echo "Building images"
+                sh 'sudo chmod 666 /var/run/docker.sock'
                 sh 'docker build -t garage-backend:latest backend/.'
                 sh 'docker build -t garage-frontend:latest ./frontend'
                 sh 'docker build -t garage-gateway:latest ./gateway'
