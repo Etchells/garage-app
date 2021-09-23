@@ -33,15 +33,15 @@ pipeline {
                 sh 'docker build -t garage-gateway:latest ./gateway'
             }
         }
-        // stage('3. Push – push the Docker images') {
-        //     steps {
-        //         //docker username and password stored in Manage Jenkins/Manage Credentials.
-        //         echo "Pushing Images to DockerHub"
-        //         sh 'docker push garage-backend:latest'
-        //         sh 'docker push garage-frontend:latest'
-        //         sh 'docker push garage-gateway:latest'
-        //     }
-        // }
+        stage('3. Push – push the Docker images') {
+            steps {
+                //docker username and password stored in Manage Jenkins/Manage Credentials.
+                echo "Pushing Images to DockerHub"
+                // sh 'docker push garage-backend:latest'
+                // sh 'docker push garage-frontend:latest'
+                // sh 'docker push garage-gateway:latest'
+            }
+        }
         stage('4. Deploy – deploy the application') {
             steps {
                 echo "Deploying App"
