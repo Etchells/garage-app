@@ -44,7 +44,7 @@ pipeline {
                 echo "Pushing Images to DockerHub"
                 sh 'docker push getchells/jenkins:garage-backend'
                 sh 'docker push getchells/jenkins:garage-frontend'
-                sh 'docker push getchells/jenkins:garage-gateway''
+                sh 'docker push getchells/jenkins:garage-gateway'
             }
         }
         stage('4. Deploy – deploy the application') {
