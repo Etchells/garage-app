@@ -1,4 +1,10 @@
 pipeline {
+        environment { 
+        registry = "getchells/https://hub.docker.com/repository/docker/getchells/jenkins" 
+        registryCredential = 'docker' 
+        dockerImage = '' 
+6
+    }
     agent any
     stages {
         stage('1. Configure – install dependencies (Docker, Docker Compose)') {
@@ -37,9 +43,9 @@ pipeline {
             steps {
                 //docker username and password stored in Manage Jenkins/Manage Credentials.
                 echo "Pushing Images to DockerHub"
-                // sh 'docker push garage-backend:latest'
-                // sh 'docker push garage-frontend:latest'
-                // sh 'docker push garage-gateway:latest'
+                sh 'docker push garage-backend:latest'
+                sh 'docker push garage-frontend:latest'
+                sh 'docker push garage-gateway:latest'
             }
         }
         stage('4. Deploy – deploy the application') {
