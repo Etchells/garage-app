@@ -16,7 +16,7 @@ pipeline {
                 // Steps to install Docker-Compose
                 echo "Installing Docker-Compose"
                 sh 'sudo chmod +x install_docker_compose.sh'
-                sh './install_docker-compose.sh'
+                sh './install_docker_compose.sh'
                 sh 'sudo systemctl restart docker' // restarting group
             }
         }
