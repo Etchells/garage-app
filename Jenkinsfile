@@ -3,7 +3,6 @@ pipeline {
         registry = "getchells/https://hub.docker.com/repository/docker/getchells/jenkins" 
         registryCredential = 'docker' 
         dockerImage = '' 
-6
     }
     agent any
     stages {
